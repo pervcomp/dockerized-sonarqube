@@ -42,6 +42,18 @@ RUN set -x \
     && rm sonarqube.zip* \
     && rm -rf $SONARQUBE_HOME/bin/*
 
+#Install all the necessary plugins.
+
+RUN set -x \
+    && cd $SONARQUBE_HOME/extensions/plugins \
+    && wget https://github.com/SonarSource/sonar-html/releases/download/2.5-RC1/sonar-web-plugin-2.5-RC1.jar \
+    && wget https://github.com/ofields/sonar-android/releases/download/1.1/sonar-android-plugin-1.1.jar \
+    && wget https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/checkstyle-sonar-plugin-4.11.jar \
+    && wget https://github.com/spotbugs/sonar-findbugs/releases/download/3.6.0/sonar-findbugs-plugin-3.6.0.jar \
+    && wget https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/2.6/sonar-pmd-plugin-2.6.jar \
+    && wget https://github.com/SonarQubeCommunity/sonar-sonargraph/releases/download/sonar-sonargraph-plugin-3.5/sonar-sonargraph-plugin-3.5.jar \
+    && wget https://github.com/davidetaibi/sonarqube-anti-patterns-code-smells/releases/download/0.7/sonar-codesmellsantipatterns-plugin-0.7.jar
+
 VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
