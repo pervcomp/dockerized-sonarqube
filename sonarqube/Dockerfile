@@ -1,12 +1,8 @@
 FROM openjdk:8
-
-ENV SONAR_VERSION=6.6 \
-    SONARQUBE_HOME=/opt/sonarqube \
+ARG VERSION
+ENV SONARQUBE_HOME=/opt/sonarqube \
+    SONAR_VERSION=${VERSION}
     # Database configuration
-    # Defaults to using H2
-    SONARQUBE_JDBC_USERNAME=sonar \
-    SONARQUBE_JDBC_PASSWORD=sonar \
-    SONARQUBE_JDBC_URL=
 
 # Http port
 EXPOSE 9000
