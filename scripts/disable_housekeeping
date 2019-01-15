@@ -1,0 +1,15 @@
+#!/bin/bash
+SONAR_URL=$1
+API_TOKEN=$2
+if [ -z $SONAR_URL ] || [ -z $API_TOKEN ]
+then
+  echo "Use script as: ./disable_houskeeping <SONAR_URL> <API_TOKEN>"
+  exit 99;
+fi
+curl -X POST -d "key=sonar.dbcleaner.hoursBeforeKeepingOnlyOneSnapshotByDay&value=9999999" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
+curl -X POST -d "key=sonar.dbcleaner.cleanDirectory&value=false" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
+curl -X POST -d "key=sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByWeek&value=9999999" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
+curl -X POST -d "key=sonar.dbcleaner.daysBeforeDeletingClosedIssues&value=9999999" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
+curl -X POST -d "key=sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByMonth&value=9999999" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
+curl -X POST -d "key=sonar.dbcleaner.weeksBeforeDeletingAllSnapshots&value=9999999" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
+curl -X POST -d "key=sonar.dbcleaner.weeksBeforeKeepingOnlyAnalysesWithVersion&value=9999999" -H "Content-Type: application/x-www-form-urlencoded" -u $API_TOKEN: $SONAR_URL/api/settings/set
