@@ -6,7 +6,16 @@ if [ "${1:0:1}" != '-' ]; then
   exec "$@"
 fi
 
+# CodeSmell's pluggin install
+
+PLUGIN="sonar-codesmellsantipatterns-plugin-0.7.jar"
+
 chown -R sonarqube:sonarqube $SONARQUBE_HOME
+
+if [ ! -f $SONARQUBE_HOME/extensions/plugins/$PLUGIN ]; then
+    curl -Lo "$SONARQUBE_HOME/extensions/plugins/$PLUGIN" "https://github.com/davidetaibi/sonarqube-anti-patterns-code-smells/releases/download/0.7/$PLUGIN"
+fi
+
 exec gosu sonarqube \
   java -jar lib/sonar-application-$SONAR_VERSION.jar \
   -Dsonar.log.console=true \
