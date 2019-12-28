@@ -23,9 +23,11 @@ You will also need to modify the settings for the VirtualBox machine Docker is u
 
 # Easy Way
 This command will run postgres and sonarqube version 7.7. 
+
     docker-compose up --build -d
 
 Sonarqube will be available at http://localhost:8090
+
 
 # Advanced Way
 
