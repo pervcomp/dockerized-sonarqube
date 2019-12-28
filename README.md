@@ -20,7 +20,16 @@ You will also need to modify the settings for the VirtualBox machine Docker is u
 
 ## Running the server
 
-* Copy the env-example -file at the repository root to .env. Modify the variables if you deem necessary:
+
+# Easy Way
+This command will run postgres and sonarqube version 7.7. 
+    docker-compose up --build -d
+
+Sonarqube will be available at http://localhost:8090
+
+# Advanced Way
+
+* Edit the file .env:
 
 The version of SonarQube you want to install.
 SONAR_VERSION
