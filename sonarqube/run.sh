@@ -14,9 +14,9 @@ chown -R sonarqube:sonarqube $SONARQUBE_HOME
 
 if [ ! -f $SONARQUBE_HOME/extensions/plugins/$PLUGIN ]; then
     curl -Lo "$SONARQUBE_HOME/extensions/plugins/$PLUGIN" "https://github.com/davidetaibi/sonarqube-anti-patterns-code-smells/releases/download/0.7/$PLUGIN"
-    curl -Lo "$SONARQUBE_HOME/extensions/plugins/sonar-pmd-plugin-3.2.1.jar" "https://github.com/jensgerdes/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar"
-    curl -Lo "$SONARQUBE_HOME/extensions/plugins/checkstyle-sonar-plugin-4.27.jar" "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.27/checkstyle-sonar-plugin-4.27.jar"
-    curl -Lo "$SONARQUBE_HOME/extensions/plugins/sonar-findbugs-plugin-3.11.1.jar" "https://github.com/spotbugs/sonar-findbugs/releases/download/3.11.1/sonar-findbugs-plugin-3.11.1.jar"
+ #  curl -Lo "$SONARQUBE_HOME/extensions/plugins/sonar-pmd-plugin-3.2.1.jar" "https://github.com/jensgerdes/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar"
+ #   curl -Lo "$SONARQUBE_HOME/extensions/plugins/checkstyle-sonar-plugin-4.27.jar" "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.27/checkstyle-sonar-plugin-4.27.jar"
+ #   curl -Lo "$SONARQUBE_HOME/extensions/plugins/sonar-findbugs-plugin-3.11.1.jar" "https://github.com/spotbugs/sonar-findbugs/releases/download/3.11.1/sonar-findbugs-plugin-3.11.1.jar"
 fi
 
 exec gosu sonarqube \
